@@ -1,0 +1,89 @@
+{% load static %}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <h3>Hakkımızda</h3>
+                    </div>
+                    <p> Geliştirici ve programcı olarak 2016 yılından beri aktif olarak programcılık ile uğraştığım bu dönemde bir çok başarı ve faydalı bilgi elde ettim.
+
+                        Yapay Zeka ve Veri Bilimi en uğraştığım ve başarılı olduğum bölümlerdir iyi bir Python bilgim ve sertifikam var.Şuanda hiçbir yerde çalışmıyorum evden proje yürütüyorum.</p>   
+                    <div class="footer-right">
+                        <ul class="footer-links-soi">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.github.com/eukqla"><i class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul><!-- end links -->
+                    </div>						
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <h3>Bilgi Linkleri</h3>
+                    </div>
+
+
+                    <ul class="footer-links">
+                        <li class="nav-item {% if '/' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'index' %}">Ana Sayfa</a></li>
+                        <li class="nav-item {% if 'about' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'about' %}">Hakkımızda</a></li>
+                        <li class="nav-item {% if 'courses' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'courses' %}">Kurslar</a></li>
+                        <li class="nav-item {% if 'teachers' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'teachers' %}">Öğretmenler</a></li>					
+                        <li class="nav-item {% if 'contact' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'contact' %}">İletişim</a></li>
+                    </ul><!-- end links -->
+                </div><!-- end clearfix -->
+            </div><!-- end col -->
+            
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="widget clearfix">
+                    <div class="widget-title">
+                        <h3>Diğer Web Uygulamalarımız</h3>
+                    </div>
+
+                    <ul class="footer-links">
+                        <li><a href="http://www.coldinformation.com">Cold Information Web Site  </a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</footer>
+
+<div class="copyrights">
+    <div class="container">
+        <div class="footer-distributed">
+            <div class="footer-center">                   
+                <p class="footer-company-name">Tüm Hakları Saklıdır. &copy; 2021 <a href="https://www.youtube.com/channel/UC5hV2Bn0LJKasmfuFfH1FYA">Astrea Software</a> Tasarlayan Kişi : <a href="https://html.design/">HTML Tasarımı | </a> Geliştirenler : Astrea Software  & Arin Yazılım </a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+<!-- ALL JS FILES -->
+<script src="{% static 'js/all.js' %}"></script>
+<!-- ALL PLUGINS -->
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/timeline.min.js' %}"></script>
+<script>
+    timeline(document.querySelectorAll('.timeline'), {
+        forceVerticalMode: 700,
+        mode: 'horizontal',
+        verticalStartPosition: 'left',
+        visibleItems: 4
+    });
+</script>
+<script>
+    $(window).on('load', function() {
+        $('#logreg').modal('show');
+    });
+</script>
+</body>
+</html>

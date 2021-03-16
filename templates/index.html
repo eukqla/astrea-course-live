@@ -1,0 +1,216 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+
+{% block content %}
+	
+	<div id="carouselExampleControls" class="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+			<li data-target="#carouselExampleControls" data-slide-to="1"></li>
+			<li data-target="#carouselExampleControls" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="carousel-item active">
+				<div id="home" class="first-section" style="background-image:url(' {% static "images/neon1.jpg" %}');">
+					<div class="dtab">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 text-right">
+									<div class="big-tagline">
+										<h2><strong>Astrea | </strong> Kurs & Eğitim & Teklonoji</h2>
+										<p class="lead">Her Kodlama Gününde Aldığın Hatalar İleride Başkalarına Hata Olacak O Hataya Uğramalarını Engellemek İstemezmisin?</p>
+									</div>
+								</div>
+							</div><!-- end row -->            
+						</div><!-- end container -->
+					</div>
+				</div><!-- end section -->
+			</div>
+			<div class="carousel-item">
+				<div id="home" class="first-section" style="background-image:url(' {% static "images/neon2.jpg" %}');">
+					<div class="dtab">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 text-left">
+									<div class="big-tagline">
+										<h2 data-animation="animated zoomInRight">Yeni Kurslar & Yeni Eğitimler Şimdi <strong>Astrea Course'da</strong></h2>
+										<p class="lead" data-animation="animated fadeInLeft">Zamanınızı İyi Değerlendirmeniz İçin Kurslarımızı Sizlere Sunmaktan Onur Ve Gurur Duymaktayız. </p>
+									</div>
+								</div>
+							</div><!-- end row -->            
+						</div><!-- end container -->
+					</div>
+				</div><!-- end section -->
+			</div>
+			<div class="carousel-item">
+				<div id="home" class="first-section" style="background-image:url(' {% static "images/neon3.jpg" %}');">
+					<div class="dtab">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 text-center">
+									<div class="big-tagline">
+										<h2 data-animation="animated zoomInRight"><strong>Yapay Zeka Geliştirme Ve Araştırma </strong> Ekibimiz</h2>
+										<p class="lead" data-animation="animated fadeInLeft">Geleceğin Teklonojisini Öğrenmek İstemezmisiniz ?</p>
+									</div>
+								</div>
+							</div><!-- end row -->            
+						</div><!-- end container -->
+					</div>
+				</div><!-- end section -->
+			</div>
+			<!-- Left Control -->
+			<a class="new-effect carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				<span class="fa fa-angle-left" aria-hidden="true"></span>
+				<span class="sr-only">Önceki</span>
+			</a>
+
+			<!-- Right Control -->
+			<a class="new-effect carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				<span class="fa fa-angle-right" aria-hidden="true"></span>
+				<span class="sr-only">Sonraki</span>
+			</a>
+		</div>
+	</div>
+	
+    <div id="overviews" class="section wb">
+        <div class="container">
+            <div class="section-title row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>En Son Yayınlanan Kurslar</h3>
+                    <p class="lead">Aşağıdaki Bölümden En Son Yayınlanan Kurslara Bakabilir, Ve Araştır Kısmına Basarak Detaylıca Kursa Kayıt Olup & Araştırma Yapabilirsin. Kolay Gelsin {{ user.username }}</p>
+                </div>
+            </div><!-- end title -->
+
+			{% for course in courses %}
+        
+            <div class="row align-items-center">
+
+				{% if not forloop.first %}
+
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="post-media wow fadeIn">
+                        <img src="{{course.image.url}}" alt="" class="img-fluid img-rounded">
+                    </div><!-- end media -->
+                </div><!-- end col -->
+
+				{% endif %}
+
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="message-box">
+                        <h2>{{ course.name }}</h2>
+                        <p>{{course.description}}</p>
+                        <a href="{% url 'course_detail' course.category.slug course.id %}" class="hover-btn-new orange"><span>Araştır</span></a>
+                    </div><!-- end messagebox -->
+                </div><!-- end col -->
+				
+				{% if forloop.first %}
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="post-media wow fadeIn">
+                        <img src="{{course.image.url}}" alt="" class="img-fluid img-rounded">
+                    </div><!-- end media -->
+                </div><!-- end col -->
+
+				{% endif %}
+			</div>
+
+			{% endfor %}
+
+
+
+
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+	<section class="section lb page-section">
+		<div class="container">
+			 <div class="section-title row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>Hakkımızda & Astrea Kursları</h3>
+                    <p class="lead">Girift Yazılım Cold Company Ekibinin Dağılması Sonucu Tekrardan Faaliyete Geçen Yeni Kurulan Bir Ekiptir Ve Bu Ekip Üyesi Olan Kemal Tarafından Arin Yazılım Youtube Serisi İle Eş Zamanlı Geliştirilmiştir. Teşekkürler Arin Yazılım.</p>
+                </div>
+            </div><!-- end title -->
+			<div class="timeline">
+				<div class="timeline__wrap">
+					<div class="timeline__items">
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-01">
+								<h2>2020</h2>
+								<p>Bir Çok Proje Geliştirdiğimiz 2020 Yılında Aynı Zamanda Birçokta Kurs Yaptık.Örneğin Sıfırdan Python Geliştirme Öğrenme Kursları.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-02">
+								<h2>2020</h2>
+								<p>Yine Projelerimizi Kısa Süre İçin Github Deposunda Paylaşarak Kullanıcıların Önüne Sunduk.Destekleriniz Bizim İçin Çok Önemliydi.Herkese 2020 Yılında Destekleri İçin Teşekkür Ederim.</p>
+							</div>
+						</div>
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-03">
+								<h2>2021</h2>
+								<p>Ekimiz 2020 Yılında Yaşanan Birkaç Olay Nedeni İle Dağıldı.Cold Company Adından Önce Girift Yazılım, Sonra Astrea Software Olarak Değiştirdik.Şuan Ekip Tekrardan Kurulma Çabası İçerisinde Yeni Kişiler Yeni İnsanlar İle Tekrardan Güzel Projeler,Kurslar Yapacağız.Bizlere İletişim Bölümünden Yazınız.</p>
+							</div>
+						</div>
+						
+						<div class="timeline__item">
+							<div class="timeline__content img-bg-04">
+								<h2>2021</h2>
+								<p>Haziran Ayında Yeni Projemiz Astrea Engine İle Sizlere Yeni Bir Teklonoji Sunacağız.Daha Fazla Bilgi Almak İçin Mayıs Ayını Bekleyin :) Beklemek İstemiyorsanız Bize İletişim Kısmından Ulaşın.	</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="section cl">
+		<div class="container">
+			<div class="row text-left stat-wrap">
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-study"></i></span>
+					<p class="stat_count">{{total_students}}</p>
+					<h3>Öğrenciler</h3>
+				</div><!-- end col -->
+
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-online"></i></span>
+					<p class="stat_count">{{total_course}}</p>
+					<h3>Kurslar</h3>
+				</div><!-- end col -->
+
+				<div class="col-md-4 col-sm-4 col-xs-12">
+					<span data-scroll class="global-radius icon_wrap effect-1 alignleft"><i class="flaticon-years"></i></span>
+					<p class="stat_count">{{total_teachers}}</p>
+					<h3>Öğretmenler</h3>
+				</div><!-- end col -->
+			</div><!-- end row -->
+		</div><!-- end container -->
+	</div><!-- end section -->
+
+    <!--<div class="parallax section dbcolor">
+        <div class="container">
+            <div class="row logos">
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'images/logo_01.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'images/logo_02.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'images/logo_03.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'images/logo_04.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'images/logo_05.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-6 wow fadeInUp">
+                    <a href="#"><img src="{% static 'images/logo_06.png' %}" alt="" class="img-repsonsive"></a>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+	{% endblock %}
